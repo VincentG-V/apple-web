@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Apple</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .navbar-nav .nav-item {
+            position: relative;
+        }
+
+        .dropdown-megamenu {
+            position: static !important;
+        }
+
+        /* Cambia el color de la navbar cuando se hace hover en el dropdown */
+        .navbar-blur.dropdown-active {
+            background-color: white;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-megamenu:hover~.navbar-blur,
+        .navbar-blur:hover {
+            background-color: white;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-menu-full {
+            width: 100%;
+            left: 0;
+            right: 0;
+            top: 100%;
+            background-color: white;
+            border: none;
+            border-radius: 0;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            margin-top: 0;
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-megamenu:hover .dropdown-menu-full {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-item-full {
+            padding: 0.5rem 1.5rem;
+            color: #333;
+        }
+
+        .dropdown-item-full:hover {
+            background-color: #f8f9fa;
+        }
+
+        .text-img-titles1 {
+            font-family: "Roboto", sans-serif;
+            font-size: 3.3rem;
+            letter-spacing: -1px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #032c48, #256590, #6c9bbb);
+            /* puedes personalizar los colores */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-img-titles2 {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: -1px;
+            font-weight: 600;
+            color: #7f7f7f;
+        }
+
+        .text-img-titles3 {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: -0.3px;
+            font-weight: 550;
+            background: linear-gradient(90deg, #494fff, #b12cff, #ff6a00);
+            /* puedes personalizar los colores */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-img-titles4 {
+            font-family: "Roboto", sans-serif;
+            font-size: 4rem;
+            letter-spacing: -1px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #032c48, #256590, #6c9bbb);
+            /* puedes personalizar los colores */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .text-img-desc {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.7rem;
+            letter-spacing: -1px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #000000, rgb(193, 112, 5), gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-img-desc2 {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0px;
+            font-weight: 550;
+        }
+
+        .text-img-desc3 {
+            font-family: "Roboto", sans-serif;
+            font-size: 1rem;
+            letter-spacing: -0.5px;
+            font-weight: 400;
+            background: linear-gradient(90deg, #494fff, #b12cff, #ff6a00);
+            /* puedes personalizar los colores */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-img-desc4 {
+            color: #000000;
+            font-family: "Roboto", sans-serif;
+            font-size: 1rem;
+            letter-spacing: -0.5px;
+            font-weight: 500;
+        }
+
+        .text-img-desc5 {
+            color: #000000;
+            font-family: "Roboto", sans-serif;
+            font-size: 1rem;
+            letter-spacing: -0.5px;
+            font-weight: 400;
+        }
+
+        .navbar-blur {
+            background-color: rgba(255, 255, 255, 0.6);
+            /* blanco con transparencia */
+            backdrop-filter: blur(10px);
+            /* desenfoque */
+            -webkit-backdrop-filter: blur(10px);
+            /* soporte Safari */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            /* opcional: línea suave abajo */
+        }
+
+        .footer {
+            background-color: rgb(246, 246, 246);
+        }
+
+        .footer-content {
+            line-height: 1.3;
+            color: rgb(111, 111, 111);
+            font-size: 12.6px;
+            margin-top: 1px;
+            margin-left: 270px;
+            margin-right: 270px;
+            padding-top: 16px;
+        }
+
+        .footer-columnas {
+            display: flex;
+            /* Permite flexbox layout */
+            font-size: 12.6px;
+            margin-left: 270px;
+            margin-right: 270px;
+        }
+
+        .footer-columna {
+            flex-basis: 33.33%;
+            /* Cada columna ocupa 1/3 del espacio */
+            line-height: 0.8;
+            color: #3d3d3d;
+        }
+
+        a.enlace-estilizado {
+            text-decoration: none;
+            /* Quita el subrayado inicial */
+            color: inherit;
+            /* Hereda el color del texto (no azul) */
+        }
+
+        a.enlace-estilizado:hover {
+            text-decoration: underline;
+            /* Subrayado al pasar el cursor */
+        }
+
+        .zoom:hover {
+            transform: scale(98%);
+        }
+
+        button {
+            font-size: 17px;
+            line-height: 1.17648;
+            font-weight: 400;
+            letter-spacing: -.022em;
+            font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            border-style: solid;
+            border-width: 1px;
+            min-width: 28px;
+            padding-left: 21px;
+            padding-right: 21px;
+            padding-top: 11px;
+            padding-bottom: 11px;
+            --sk-button-margin-horizontal: 18px;
+            --sk-button-margin-vertical: 18px;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            white-space: nowrap;
+            border-radius: 980px;
+            margin-top: 15px;
+            margin-bottom: 16px;
+
+        }
+
+        .mas-info {
+            background: #0071e3;
+            color: white;
+            border-color: #0071e3;
+            margin-right: 15px;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            all: unset;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #dddddd;
+            margin: 0 5px;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-indicators .active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-blur" style="height: 45px;">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav" style="font-size: small;">
+                    <li class="nav-item m-3">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-brands fa-apple fa-lg" style="color: black;"></i></a>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="tiendaDropdown">Tienda</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="tiendaDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Productos</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPhone</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPad</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Accesorios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">AirPods</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Watch</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Servicios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Music</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iCloud</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="macDropdown">Mac</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="macDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="px-4">Portátiles</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">MacBook Air</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">MacBook Pro</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="px-4">Escritorio</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iMac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac mini</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="macDropdown">iPad</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="macDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="px-4">Portátiles</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">MacBook Air</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">MacBook Pro</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="px-4">Escritorio</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iMac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac mini</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="macDropdown">iPhone</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="macDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="px-4">Portátiles</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">MacBook Air</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">MacBook Pro</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="px-4">Escritorio</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iMac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac mini</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="macDropdown">Watch</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="macDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="px-4">Portátiles</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">MacBook Air</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">MacBook Pro</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="px-4">Escritorio</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iMac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac mini</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="tiendaDropdown">AirPods</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="tiendaDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Productos</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPhone</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPad</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Accesorios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">AirPods</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Watch</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Servicios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Music</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iCloud</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="tiendaDropdown">TV y Casa</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="tiendaDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Productos</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPhone</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPad</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Accesorios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">AirPods</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Watch</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Servicios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Music</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iCloud</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="tiendaDropdown">Entretenimiento</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="tiendaDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Productos</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPhone</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPad</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Accesorios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">AirPods</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Watch</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Servicios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Music</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iCloud</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="tiendaDropdown">Accesorios</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="tiendaDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Productos</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPhone</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPad</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Accesorios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">AirPods</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Watch</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Servicios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Music</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iCloud</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3 dropdown-megamenu">
+                        <a class="nav-link" style="color: black;" href="#" id="tiendaDropdown">Soporte</a>
+                        <div class="dropdown-menu dropdown-menu-full" aria-labelledby="tiendaDropdown">
+                            <div class="container" style="margin-left: 16.5%;">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Productos</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPhone</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Mac</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iPad</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Accesorios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">AirPods</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Watch</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="px-4">Servicios</h6>
+                                        <a class="dropdown-item dropdown-item-full" href="#">Apple Music</a>
+                                        <a class="dropdown-item dropdown-item-full" href="#">iCloud</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3">
+                        <a class="nav-link" href="#">
+                            <i class="fa-brands fa-sistrix" style="color: #000000;"></i></a>
+                    </li>
+                    <li class="nav-item m-3">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-bag-shopping" style="color: #000000;"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid p-2">
+        <div class="row">
+            <div class="col position-relative">
+                <img src="McB.jpg" alt="compra-2" class="img-fluid w-100 mb-2">
+                <div class="position-absolute start-50 translate-middle text-center" style="top: 18%;">
+                    <h1 style="font-size: 1.6rem; font-weight: -1; margin-top: 0; margin-bottom: 0; line-height: 0.2;">
+                        <i class="fa-brands fa-apple fa-sm" style="color: #000000;"></i><strong> MacBook Air </strong>
+                    </h1>
+                    <h1 class="text-img-titles1" style="margin-top: 0; margin-bottom: 0; line-height: 2;">Vuela ligero.
+                    </h1>
+                </div>
+                <div class="position-absolute start-50 translate-middle text-center" style="bottom: -12%;">
+                    <h1 class="text-img-titles3" style="margin-bottom: 1.2rem;">Diseñado para Apple Intelligence.</h1>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <a href="precheckout.html"><button class="mas-info" style="margin: 0.1rem;">Comprar</button></a>
+                        <h1 class="text-img-desc4" style="margin-top: 1rem;">Desde 1.199 €</h1>
+                        <h1 class="text-img-desc5" style="margin-top: 0rem;">Apple Intelligence ya está disponible en
+                            español.</h1>
+                        <h1 class="text-img-titles2" style="margin-top: 3rem;">
+                            El MacBook Air es el portátil más popular del mundo por una razón. O por muchas. Como sus
+                            <span style="color: #000000;">hasta 18 horas de autonomía.</span> El <span
+                                style="color: #000000;">chip M4,</span> con un rendimiento asombroso para trabajar y
+                            jugar a otro nivel. <span style="color: #000000;">Apple Intelligence,</span> un sistema
+                            integrado en el dispositivo que te lo
+                            pone todo mucho más fácil.2 Sus cuatro colores espectaculares, incluido el nuevo azul cielo.
+                            Y un diseño de altos vuelos para hacer lo que quieras donde quieras.
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col position-relative">
+                <img src="Mc1.jpg" alt="macbook1" class="img-fluid w-100 mb-3 mt-2">
+                <div class="position-absolute start-50 translate-middle text-center" style="top: 12%;">
+                    <h1 class="text-img-titles4" style="margin-top: 0; margin-bottom: 0; line-height: 2;">Llévalo a tu
+                        aire.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row row justify-content-center">
+                <div class="col-8">
+                    <h1 class="text-img-titles2">
+                        El MacBook Air con chip M4 <span style="color: #000000;">es increíblemente ligero. Con poco más
+                            de
+                            un centímetro de grosor,</span> te lo querrásllevar al fin del mundo. Además está fabricado
+                        con
+                        más de un 50 % de materiales reciclados y cuenta con una carcasa de aluminio reciclado
+                        ultrarresistente.
+                    </h1>
+                    <img src="Mc3.jpg" class="w-100 img-fluid mt-3" style="margin-bottom: 3%;">
+                    <h1 class="text-img-titles2 mb-3">
+                        <span style="color: #000000;">Un nuevo color caído del cielo.</span> Elige entre cuatro tonos
+                        que
+                        brillan con luz propia, incluido el
+                        nuevo azul cielo. Cada modelo viene con un cable de carga MagSafe a juego.
+                    </h1>
+                    <!-- Carrusel/Slider -->
+                    <div id="miSlider" class="carousel slide mx-auto" data-bs-ride="carousel" data-bs-interval="3500"
+                        style="height: auto; width: 100%;">
+                        <!-- Indicadores (puntos) -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#miSlider" data-bs-slide-to="0"
+                                class="active"></button>
+                            <button type="button" data-bs-target="#miSlider" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#miSlider" data-bs-slide-to="2"></button>
+                        </div>
+
+                        <!-- Slides -->
+                        <div class="carousel-inner" style="border-radius: 8px;">
+                            <div class="carousel-item active zoom">
+                                <img src="Slimac2.jpg" class="d-block w-100" alt="Slide 1">
+                            </div>
+                            <div class="carousel-item zoom">
+                                <img src="Slimac.jpg" class="d-block w-100" alt="Slide 2">
+                            </div>
+                            <div class="carousel-item zoom">
+                                <img src="Slimac3.jpg" class="d-block w-100" alt="Slide 3">
+                            </div>
+                        </div>
+
+                        <!-- Controles (flechas) -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#miSlider"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#miSlider"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <footer class="footer">
+            <div class="footer-content">
+                <p style="margin-bottom: 1%;"> 1. Apple Intelligence está disponible en versión beta como actualización
+                    de
+                    iOS 18, iPadOS 18 y macOS Sequoia para todos los modelos de iPhone 16, el iPhone 15 Pro, el iPhone
+                    15
+                    Pro Max, el iPad mini (A17 Pro) y los modelos de iPad y Mac con chip M1 o posterior con el idioma de
+                    Siri y el dispositivo configurados en alemán, chino (simplificado), coreano, español, francés,
+                    inglés
+                    (de Australia, Canadá, Estados Unidos, India, Irlanda, Nueva Zelanda, Reino Unido, Singapur o
+                    Sudáfrica), italiano, japonés o portugués (de Brasil). A lo largo del año se irán sumando otros
+                    idiomas,
+                    como vietnamita. Algunas prestaciones no están disponibles en todos los países o idiomas.</p>
+                <p style="margin-bottom: 1%;"> 2. La prestación Prueba de Audición está disponible en modelos de AirPods
+                    Pro
+                    2 con el firmware más reciente enlazados a un iPhone o iPad compatible que tenga iOS 18, iPadOS 18 o
+                    versiones posteriores. Su uso no está recomendado para menores de edad. Las prestaciones de salud
+                    auditiva están sujetas a cambios. Algunas prestaciones no están disponibles en todos los países o
+                    idiomas. Para ver la lista completa, haz clic aquí. Si has notado un cambio repentino en tu
+                    audición,
+                    consulta a un médico. Solo un profesional de la salud puede diagnosticar la pérdida auditiva. Este
+                    producto cumple con la legislación vigente.</p>
+                <p style="margin-bottom: 1%;"> 3. Disponible en dos modelos: AirPods 4 y AirPods 4 con cancelación
+                    activa de
+                    ruido.</p>
+                <p style="margin-bottom: 1%;"> 4. Los descuentos dependen del estado, año y configuración del
+                    dispositivo
+                    que entregues. Para poder cambiar tu dispositivo por un descuento o una Apple Gift Card, tienes que
+                    ser
+                    mayor de edad. No todos los dispositivos pueden acogerse a esta oferta. La entrega de ordenadores de
+                    mesa solo puede tramitarse por internet en estos momentos. Para obtener más información sobre los
+                    dispositivos válidos y su reciclaje, consulta a nuestro socio. Puede haber restricciones y
+                    limitaciones.
+                    El pago dependerá de que el estado del dispositivo coincida con el indicado durante la tasación.
+                    Apple
+                    se reserva el derecho a rechazar o limitar la cantidad de dispositivos según su criterio. El valor
+                    de tu
+                    dispositivo se descontará del precio del producto Apple nuevo. Esta oferta puede no estar disponible
+                    en
+                    todas las tiendas. Algunas tiendas pueden exigir más requisitos.</p>
+                <p style="margin-bottom: 1%;"> Apple TV+ requiere suscripción.</p>
+                <p style="margin-bottom: 20px;"> Las prestaciones están sujetas a cambios. Algunas prestaciones,
+                    aplicaciones
+                    y servicios no están disponibles en todas las zonas geográficas o idiomas.</p>
+                <hr>
+            </div>
+            <div class="footer-columnas" style="padding-top: 8px;">
+                <div class="footer-columna">
+                    <p style="color: #424242;"><b>Ver y comprar</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Tienda</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Mac</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">iPad</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">iPhone</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Watch</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">AirPods</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">TV y Casa</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">AirTag</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Accesorios</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Tarjetas regalo</a></p>
+                    <br>
+                    <p style="color: #424242;"><b>Cartera de Apple</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Tienda</a></p>
+                </div>
+                <div class="footer-columna">
+                    <p style="color: #424242;"><b>Cuentas</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Gestiona tu cuenta de Apple</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Cuenta del Apple Store</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">iCloud.com</a></p>
+                    <br>
+                    <p style="color: #424242;"><b>Entretenimiento</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple One</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple TV+</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple Music</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple Arcade</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple Fitness+</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple Podcasts</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple Books</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">App Store</a></p>
+                </div>
+                <div class="footer-columna">
+                    <p style="color: #424242;"><b>Apple Store</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Encontrar una tienda</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Genius Bar</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Today at Apple</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Reservas para grupos</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Campamento de Apple</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">App Apple Store</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Reacondicionados certificados</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple Trade In</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Financiación</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Estado del pedido</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Ayuda para comprar</a></p>
+                </div>
+                <div class="footer-columna">
+                    <p style="color: #424242;"><b>Empresas</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple y las empresas</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Compras de empresa</a></p>
+                    <br>
+                    <p style="color: #424242;"><b>Educación</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple en la educación</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Compras para la universidad</a></p>
+                    <br>
+                    <p style="color: #424242;"><b>Salud</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Apple en el sector sanitario</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">El Mac en el sector sanitario</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Salud en el Apple Watch</a></p>
+                </div>
+                <div class="footer-columna">
+                    <p style="color: #424242;"><b>Valores de Apple</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Accesibilidad</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Medio ambiente</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Privacidad</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Cadena de suministro</a></p>
+                    <br>
+                    <p style="color: #424242;"><b>Acerca de Apple</b></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Newsroom</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Directivos de Apple</a></p>
+                    <P><a href="testing-page.html" class="enlace-estilizado">Oportunidades laborales</a></P>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Garantía</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Inversores</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Ética y conducta</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Eventos</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Creación de empleo en Europa</a></p>
+                    <p><a href="testing-page.html" class="enlace-estilizado">Contacto</a></p>
+                </div>
+            </div>
+            <div class="footer-content">
+                <hr>
+                <p>Copyright © 2025 Apple Inc. Todos los derechos reservados.</p>
+                <span>Política de privacidad | Uso de cookies | Condiciones de uso | Ventas y reembolsos | Avisos
+                    legales |
+                    Mapa del sitio</span>
+            </div>
+            <br>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // JavaScript para manejar el cambio de color al hacer hover
+            document.querySelectorAll('.dropdown-megamenu').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    document.getElementById('mainNavbar').classList.add('dropdown-active');
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    document.getElementById('mainNavbar').classList.remove('dropdown-active');
+                });
+            });
+        </script>
+</body>
+
+</html>
